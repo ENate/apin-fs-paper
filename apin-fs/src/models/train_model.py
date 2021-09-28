@@ -30,14 +30,10 @@ from custom_loss_regularization import (
 )  # noqa
 
 # METHOD = "c_classifier"
-# CHOICES = 3
-METHOD = "regressor"
-
-# CHOICES = 5  # WCDS
-# CHOICES = 2 #
+# METHOD = "regressor"
 # METHOD = "classify"
 
-# METHOD = "classification"
+METHOD = "classification"
 
 
 class TrainerAlgorithm(object):
@@ -74,15 +70,6 @@ class TrainerAlgorithm(object):
         # train_dataset = train_dataset.shuffle(set_points).batch(64)
         output_dim = y_train.shape[1]
 
-        # if CHOICES == 1:
-        #    output_dim = 2
-        # elif CHOICES == 2:  # wcds dataset
-        #    output_dim = 3
-        # elif CHOICES == 3:  # solar data
-        #    output_dim = 1
-        # else:
-        #    output_dim = 5  # rna_gene_sequence
-
         if METHOD == "classification":
             model0 = tf.keras.Sequential(
                 [
@@ -115,7 +102,7 @@ class TrainerAlgorithm(object):
             model0 = tf.keras.Sequential(
                 [
                     tf.keras.layers.Dense(
-                        10,
+                        9,
                         activation="sigmoid",
                         use_bias=True,
                         input_shape=(self.input_size,),
@@ -206,7 +193,8 @@ class TrainerAlgorithm(object):
         model_with_zeros = np.where(np.abs(optimal_model) <= 1e-3, optimal_model, 0)
         # print(np.round(model_with_zeros, 4))
         # print(optimal_model.shape)
-        print(np.round(optimal_model, 2))
+        print(np.transpose(np.round(optimal_model, 2)))
+        # print(np.round(optimal_model, 2))
         t2_stop = time.perf_counter()
         print("Elapsed time: ", t2_stop - t2_start)
         predicted_output = model0(my_datasets.get("x_test"))
@@ -235,6 +223,7 @@ class TrainerAlgorithm(object):
             #    x=my_datasets.get("x_test"), y=my_datasets.get("y_test"), verbose=0)
             # print("adam - test_loss: %f - test_accuracy: %f" %
             #      (test_loss, test_acc))
+        return model0.trainable_variables
 
     def dropout_example(self, train_data):
         """To include testing data results"""
@@ -283,7 +272,7 @@ class TrainerAlgorithm(object):
 
 if __name__ == "__main__":
     N_CLASSES = 3
-    CHOICES = 3
+    CHOICES = 1
     if CHOICES == 1:
         DATA_FILE = "/home/nath/forLenovoUbuntu/datfile/otherdata/tfExample/datafiles/breast-cancer-wisconsin-data/data.csv"
         (

@@ -203,7 +203,7 @@ class DampingAlgorithm:
 
     def __init__(
         self,
-        starting_value=1e-2,
+        starting_value=0.1,
         dec_factor=0.1,
         inc_factor=10.0,
         min_value=1e-10,
@@ -284,7 +284,7 @@ class Trainer:
     def __init__(
         self,
         model,
-        optimizer=tf.keras.optimizers.SGD(learning_rate=0.01),
+        optimizer=tf.keras.optimizers.SGD(learning_rate=0.1),
         loss=CategoricalCrossentropy(),
         damping_algorithm=DampingAlgorithm(),
         attempts_per_step=10,
@@ -639,13 +639,16 @@ class Trainer:
             #        self.model.trainable_variables[1], index, update
             #    )
         # Check how to store parameters: the rest!
-        self.the_rest_parameters.append(self.model.trainable_variables[0::2])
+        self.the_rest_parameters.append(self.model.trainable_variables)
         # check whether group of parameters are close to 0!
         self.int_counter = self.int_counter + 1
         if self.int_counter == 3:
             print("Shape:")
             # Calculate the pointwise sign function of parameters in each matrix
-            for hidden_layer_params_idx in range(len(self.the_rest_parameters[2])):
+            # for hidden_layer_params_idx in range(2, len(self.the_rest_parameters[2]), 2):
+            for hidden_layer_params_idx in range(
+                2, len(self.model.trainable_variables), 2
+            ):
                 # self.normed_tf = tf.norm(self.model.trainable_variables[0], axis=1)
                 # Place for pointwise multiplication!
                 osc_tensor, updates_l1 = l1_condition(

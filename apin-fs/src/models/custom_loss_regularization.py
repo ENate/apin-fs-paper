@@ -67,7 +67,9 @@ class CustomCategoricalLoss(tf.keras.losses.Loss):
             Tensor: Tensor loss object
         """
         # Selects the y_pred which corresponds to y_true equal to 1.
-        lasso = RegularizationParameters().l1_parameter_norm(self.model_matrix[0::2])
+        lasso = RegularizationParameters().l1_parameter_norm(
+            self.model_matrix[2:][0::2]
+        )
         reg, _ = RegularizationParameters().structured_penalty(
             self.model_matrix[0], self.model_matrix[1]
         )
@@ -86,7 +88,9 @@ class CustomCategoricalLoss(tf.keras.losses.Loss):
             Tensor: Loss tensor for training and testing.
         """
         # Selects the y_pred which corresponds to y_true equal to 1.
-        lasso = RegularizationParameters().l1_parameter_norm(self.model_matrix[2:])
+        lasso = RegularizationParameters().l1_parameter_norm(
+            self.model_matrix[2:][0::2]
+        )
         reg, reg_bias = RegularizationParameters().structured_penalty(
             self.model_matrix[0], self.model_matrix[1]
         )
@@ -113,7 +117,7 @@ class CustomMSE(tf.keras.losses.Loss):
         """
         mse0 = y_true - y_pred
         lasso_mse = RegularizationParameters().l1_parameter_norm(
-            self.all_model_params[0::2]
+            self.all_model_params[2:][0::2]
         )
         reg_mse, reg_mse_bias = RegularizationParameters().structured_penalty(
             self.all_model_params[0], self.all_model_params[1]
@@ -129,7 +133,7 @@ class CustomMSE(tf.keras.losses.Loss):
         """
         mse0 = y_true - y_pred
         lasso_mse = RegularizationParameters().l1_parameter_norm(
-            self.all_model_params[0::2]
+            self.all_model_params[2:][0::2]
         )
         reg_mse, _ = RegularizationParameters().structured_penalty(
             self.all_model_params[0], self.all_model_params[1]
@@ -156,36 +160,36 @@ class ReducedOutputMSE(tf.keras.losses.Loss):
     ):
         super(ReducedOutputMSE, self).__init__(reduction=reduction, name=name)
         self.all_model_parameters = all_model_params
-        self.reg_factor_l2 = 0.006
+        self.reg_factor_l2 = 0.03
         self.reg_factor_l1 = 0.003
 
     def call(self, y_true, y_pred):
-        lasso_mse = RegularizationParameters().l1_parameter_norm(
+        self.lasso_mse1 = RegularizationParameters().l1_parameter_norm(
             self.all_model_parameters[0::2]
         )
-        reg_mse, _ = RegularizationParameters().structured_penalty(
+        self.reg_mse2, _ = RegularizationParameters().structured_penalty(
             self.all_model_parameters[0], self.all_model_parameters[1]
         )
         sq_diff = tf.math.squared_difference(y_true, y_pred)
         return (
             tf.math.reduce_mean(sq_diff, axis=1)
-            + self.reg_factor_l1 * lasso_mse
-            + self.reg_factor_l2 * reg_mse
+            + self.reg_factor_l1 * self.lasso_mse1
+            + self.reg_factor_l2 * self.reg_mse2
         )
 
     def residuals(self, y_true, y_pred):
-        lasso_mse = RegularizationParameters().l1_parameter_norm(
+        self.lasso_mse = RegularizationParameters().l1_parameter_norm(
             self.all_model_parameters[0::2]
         )
-        reg_mse, _ = RegularizationParameters().structured_penalty(
+        self.reg_mse, _ = RegularizationParameters().structured_penalty(
             self.all_model_parameters[0], self.all_model_parameters[1]
         )
         sq_diff = tf.math.squared_difference(y_true, y_pred)
         eps = tf.keras.backend.epsilon()
         return (
             tf.math.sqrt(eps + tf.math.reduce_mean(sq_diff, axis=1))
-            + self.reg_factor_l1 * lasso_mse
-            + self.reg_factor_l2 * reg_mse
+            + self.reg_factor_l1 * self.lasso_mse
+            + self.reg_factor_l2 * self.reg_mse
         )
 
 
@@ -206,7 +210,7 @@ class CategoricalMeanSquaredErr(tf.keras.losses.Loss):
         super(CategoricalMeanSquaredErr, self).__init__(reduction=reduction, name=name)
         self.all_model_parameters = all_model_param
         self.reg_factor_l2 = 0.005
-        self.reg_factor_l1 = 0.001
+        self.reg_factor_l1 = 0.0002
 
     def call(self, y_true, y_pred):
         lasso_classif = RegularizationParameters().l1_parameter_norm(
