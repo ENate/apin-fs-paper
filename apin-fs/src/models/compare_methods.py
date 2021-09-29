@@ -24,6 +24,7 @@ from sklearn.model_selection import StratifiedKFold
 
 # cat and xgnoost
 # for xgboost
+import pandas as pd
 import xgboost as xgb
 from sklearn.metrics import mean_squared_error
 from sklearn.utils import shuffle
