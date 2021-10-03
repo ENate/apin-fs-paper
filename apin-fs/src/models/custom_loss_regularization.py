@@ -52,8 +52,8 @@ class CustomCategoricalLoss(tf.keras.losses.Loss):
         name="c_mean_sq_error",
     ):
         super(CustomCategoricalLoss, self).__init__(reduction=reduction, name=name)
-        self.reg_factor_l2 = 0.0005
-        self.reg_factor_l1 = 0.0001
+        self.reg_factor_l2 = 0.0008
+        self.reg_factor_l1 = 0.0002
         self.model_matrix = model_matrix
 
     def call(self, y_true, y_pred):
@@ -209,8 +209,8 @@ class CategoricalMeanSquaredErr(tf.keras.losses.Loss):
     ):
         super(CategoricalMeanSquaredErr, self).__init__(reduction=reduction, name=name)
         self.all_model_parameters = all_model_param
-        self.reg_factor_l2 = 0.005
-        self.reg_factor_l1 = 0.0002
+        self.reg_factor_l2 = 0.002
+        self.reg_factor_l1 = 0.001
 
     def call(self, y_true, y_pred):
         lasso_classif = RegularizationParameters().l1_parameter_norm(

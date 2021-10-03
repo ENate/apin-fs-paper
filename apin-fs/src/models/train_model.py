@@ -190,10 +190,11 @@ class TrainerAlgorithm(object):
         # Generate predictions (probabilities -- the output of the last layer)
         # on new data using `predict`
         optimal_model = model0.trainable_variables[0].numpy()
-        model_with_zeros = np.where(np.abs(optimal_model) <= 1e-3, optimal_model, 0)
+        model_with_zeros = np.where(np.abs(optimal_model) < 0.1, 0.0, optimal_model)
         # print(np.round(model_with_zeros, 4))
         # print(optimal_model.shape)
-        mat_input_hidden_1 = np.round(optimal_model, 2)
+        mat_input_hidden_1 = np.round(model_with_zeros, 2)
+        # mat_input_hidden_1 = np.round(optimal_model, 2)
         print(np.transpose(mat_input_hidden_1))
         # print(np.round(optimal_model, 2))
         t2_stop = time.perf_counter()
@@ -268,7 +269,7 @@ class TrainerAlgorithm(object):
         # format before printing
         optimal_model = model_dropout.trainable_variables[0].numpy()
         model_with_zeros_d = np.where(np.abs(optimal_model) > 1e-2, optimal_model, 0.0)
-        print(np.round(model_with_zeros_d, 4))
+        print(np.round(model_with_zeros_d, 2))
 
 
 if __name__ == "__main__":

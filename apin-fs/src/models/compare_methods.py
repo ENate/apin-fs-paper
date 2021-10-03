@@ -36,8 +36,8 @@ from sklearn.preprocessing import OneHotEncoder
 sys.path.append("../data/")
 sys.path.append(".")
 __path__ = [os.path.dirname(os.path.abspath(__file__))]
-from make_dataset import WCDSPreprocessing  # noqa
-
+# from make_dataset import WCDSPreprocessing  # noqa
+from data.make_dataset import WCDSPreprocessing
 
 def wcds_preprocess(wsdata):
     """
