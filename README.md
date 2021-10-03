@@ -5,6 +5,7 @@
 1) Python 3.8+
 2) TensorFlow v2.5+
 3) Install packages listed in the ``` requirements.txt ``` file.
+
 <hr>
 
 ##  Installation requirements
@@ -45,4 +46,16 @@ Assuming the correct versions of all packages in the requirements file have been
 
      python train_model.py
 
-Note: This page is continuously update and the usage of the code is only available to the APIN Journal. Any other authorization of the use or duplication must be requested via the email: <nathaniel@aims.ac.za> or <message4nath@gmail.com>.
+To visualize Performance statitics for the Training and Testing data sets for different Algorithms:
+
+For the heart disease data set:
+
+     cd ~/apin-fs-paper/apin-fs/reports/h_data/
+     python h_data-results.py
+
+To visualize performance on the WCDS data set
+
+     cd /home/nath/apin-fs-paper/apin-fs/reports/wcds_data/
+     python wcds_results.py
+
+Note: This page will be continuously updated and the authorized usage of the code is only available to the APIN Journal. For other request, authorization or duplication, please contact the owner via the following email: <nathaniel@aims.ac.za> or <message4nath@gmail.com>.
