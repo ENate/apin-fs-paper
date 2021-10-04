@@ -1,4 +1,4 @@
-# Preparation to Run the Manuscript Code
+#Instructions on how to run the Code
 
 ## Tech Stack
 
@@ -46,7 +46,7 @@ Assuming the correct versions of all packages in the requirements file have been
 
      python train_model.py
 
-To visualize Performance statitics for the Training and Testing data sets for different Algorithms:
+To visualize the Performance statitics for the Training and Testing data sets for different Algorithms:
 
 For the heart disease data set:
 
@@ -69,16 +69,16 @@ Data set folders:
 
      cd ~/apin-fs-paper/apin-fs/src/data/
 
-For now, two files are currently available:
+Change the choices for different data sets. For choices 1 and 3, following data files are currently available:
 
 1) The Artificial Data set:
 
-     cd raw/testData.mat
+    cd raw/testData.mat
 
 2) WCDS data set:
-     
+
      cd raw/data.csv
 
-The ``` data ``` folder will continuously be updated with other data sets.
+The ``` data ``` folder will continuously be updated with other data sets. 
 
 Note: This page will be continuously be updated. Meanwhile, the authorized usage of the code is only available to the APIN Journal. For other request, authorization or duplication, please contact the owner via the following email: <nathaniel@aims.ac.za> or <message4nath@gmail.com>.

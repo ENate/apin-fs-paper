@@ -275,6 +275,7 @@ class TrainerAlgorithm(object):
 
 if __name__ == "__main__":
     N_CLASSES = 3
+    # change the choices for different data sets. For choices 1 and 3 (with message given by testData)
     CHOICES = 1
     if CHOICES == 1:
         DATA_FILE = "~/apin-fs-paper/apin-fs/data/raw/data.csv"
