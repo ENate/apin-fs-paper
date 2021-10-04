@@ -12,6 +12,7 @@ from tensorflow.python.keras.backend import random_normal
 
 sys.path.append("../data/")
 sys.path.append(".")
+sys.path.append("..../")
 __path__ = [os.path.dirname(os.path.abspath(__file__))]
 from sequence_rna import func_inputs_and_label  # noqa
 from make_dataset import (
@@ -276,7 +277,7 @@ if __name__ == "__main__":
     N_CLASSES = 3
     CHOICES = 1
     if CHOICES == 1:
-        DATA_FILE = "~/forLenovoUbuntu/datfile/otherdata/tfExample/datafiles/breast-cancer-wisconsin-data/data.csv"
+        DATA_FILE = "~/apin-fs-paper/apin-fs/data/raw/data.csv"
         (
             TRAINING_INPUTS,
             TESTING_INPUTS,
@@ -284,7 +285,9 @@ if __name__ == "__main__":
             TESTING_OUTPUT,
         ) = WCDSPreprocessing(DATA_FILE).wcds_preprocess()
     elif CHOICES == 2:
-        LSTV_DATA = "~/theFinalProject/rwth_ssh_cluster/src/data/LSVT_voice_rehabilitation.xlsx"
+        LSTV_DATA = (
+            "~/theFinalProject/rwth_ssh_cluster/src/data/LSVT_voice_rehabilitation.xlsx"
+        )
         (
             TRAINING_INPUTS,
             TESTING_INPUTS,
@@ -294,11 +297,9 @@ if __name__ == "__main__":
     elif CHOICES == 3:
         DATA_MSG = "testData"
         if DATA_MSG == "solardatanorm":
-            M_LAB_FILE = (
-                "~/Desktop/NewFolder2112/SparseNet12ab/solardatanorm.mat"
-            )
+            M_LAB_FILE = "~/Desktop/NewFolder2112/SparseNet12ab/solardatanorm.mat"
         else:
-            M_LAB_FILE = "~/Desktop/NewFolder2112/SparseNet12ab/testData.mat"
+            M_LAB_FILE = "~/apin-fs-paper/apin-fs/data/raw/testData.mat"
         (
             TRAINING_INPUTS,
             TESTING_INPUTS,
