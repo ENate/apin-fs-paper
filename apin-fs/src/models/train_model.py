@@ -276,7 +276,7 @@ if __name__ == "__main__":
     N_CLASSES = 3
     CHOICES = 1
     if CHOICES == 1:
-        DATA_FILE = "/home/nath/forLenovoUbuntu/datfile/otherdata/tfExample/datafiles/breast-cancer-wisconsin-data/data.csv"
+        DATA_FILE = "~/forLenovoUbuntu/datfile/otherdata/tfExample/datafiles/breast-cancer-wisconsin-data/data.csv"
         (
             TRAINING_INPUTS,
             TESTING_INPUTS,
@@ -284,7 +284,7 @@ if __name__ == "__main__":
             TESTING_OUTPUT,
         ) = WCDSPreprocessing(DATA_FILE).wcds_preprocess()
     elif CHOICES == 2:
-        LSTV_DATA = "/home/nath/theFinalProject/rwth_ssh_cluster/src/data/LSVT_voice_rehabilitation.xlsx"
+        LSTV_DATA = "~/theFinalProject/rwth_ssh_cluster/src/data/LSVT_voice_rehabilitation.xlsx"
         (
             TRAINING_INPUTS,
             TESTING_INPUTS,
@@ -295,10 +295,10 @@ if __name__ == "__main__":
         DATA_MSG = "testData"
         if DATA_MSG == "solardatanorm":
             M_LAB_FILE = (
-                "/home/nath/Desktop/NewFolder2112/SparseNet12ab/solardatanorm.mat"
+                "~/Desktop/NewFolder2112/SparseNet12ab/solardatanorm.mat"
             )
         else:
-            M_LAB_FILE = "/home/nath/Desktop/NewFolder2112/SparseNet12ab/testData.mat"
+            M_LAB_FILE = "~/Desktop/NewFolder2112/SparseNet12ab/testData.mat"
         (
             TRAINING_INPUTS,
             TESTING_INPUTS,
@@ -313,7 +313,7 @@ if __name__ == "__main__":
             TESTING_OUTPUT,
         ) = func_inputs_and_label("data.csv", "labels.csv", N_CLASSES)
     elif CHOICES == 5:
-        HEART_DATA = "/home/nath/forLenovoUbuntu/datfile/heartdisease/Integrated.csv"
+        HEART_DATA = "~/forLenovoUbuntu/datfile/heartdisease/Integrated.csv"
         TRAINING_INPUTS, TESTING_INPUTS, TRAINING_OUTPUT, TESTING_OUTPUT = HeartData(
             HEART_DATA
         ).main_cleaning_74()
