@@ -55,7 +55,7 @@ For the heart disease data set:
 
 To visualize performance on the WCDS data set
 
-     cd /home/nath/apin-fs-paper/apin-fs/reports/wcds_data/
+     cd ~/apin-fs-paper/apin-fs/reports/wcds_data/
      python wcds_results.py
 
 Note: This page will be continuously updated and the authorized usage of the code is only available to the APIN Journal. For other request, authorization or duplication, please contact the owner via the following email: <nathaniel@aims.ac.za> or <message4nath@gmail.com>.
