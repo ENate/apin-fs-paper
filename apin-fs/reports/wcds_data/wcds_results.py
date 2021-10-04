@@ -82,11 +82,11 @@ def plot_wcds(kwarg_dicts, tp_fp, tn_fn):
     sns.barplot(x="group", y="y_qty", hue="x_qty", data=tn_fn)
     # save a pdf file
     fig.savefig(
-        "/home/nath/springer-fs-paper/LaTeX_DL_468198_240419/images_AI/compare_wcds.pdf"
+        "~/springer-fs-paper/LaTeX_DL_468198_240419/images_AI/compare_wcds.pdf"
     )
     # save an eps file
     fig.savefig(
-        "/home/nath/springer-fs-paper/LaTeX_DL_468198_240419/images_AI/compare_wcds.pdf"
+        "~/springer-fs-paper/LaTeX_DL_468198_240419/images_AI/compare_wcds.pdf"
     )  # eps', format='eps', dpi=800)
     plt.show()
 
