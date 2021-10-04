@@ -58,4 +58,27 @@ To visualize performance on the WCDS data set
      cd ~/apin-fs-paper/apin-fs/reports/wcds_data/
      python wcds_results.py
 
-Note: This page will be continuously updated and the authorized usage of the code is only available to the APIN Journal. For other request, authorization or duplication, please contact the owner via the following email: <nathaniel@aims.ac.za> or <message4nath@gmail.com>.
+For the Heart Disease data:
+
+     python ~/apin-fs-paper/apin-fs/reports/h_data/h_data-results.py
+To run notebooks for analysis and other vital statistics about the data sets
+
+     cd ~/apin-fs-paper/apin-fs/notebooks
+
+Data set folders:
+
+     cd ~/apin-fs-paper/apin-fs/src/data/
+
+For now, two files are currently available:
+
+1) The Artificial Data set:
+
+     cd raw/testData.mat
+
+2) WCDS data set:
+     
+     cd raw/data.csv
+
+The ``` data ``` folder will continuously be updated with other data sets.
+
+Note: This page will be continuously be updated. Meanwhile, the authorized usage of the code is only available to the APIN Journal. For other request, authorization or duplication, please contact the owner via the following email: <nathaniel@aims.ac.za> or <message4nath@gmail.com>.
