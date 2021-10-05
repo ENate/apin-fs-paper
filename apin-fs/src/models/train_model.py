@@ -142,8 +142,8 @@ class TrainerAlgorithm(object):
                 loss=CustomCategoricalLoss(model0.trainable_variables),
                 metrics=["accuracy"])
 
-            """
-            """
+            
+            
             model_wrapper = lm_2.ModelWrapper(
                 tf.keras.models.clone_model(model0))
 
@@ -152,7 +152,7 @@ class TrainerAlgorithm(object):
                 loss=CustomCategoricalLoss(model0.trainable_variables),
                 solve_method='qr',
                 metrics=['accuracy'])
-                """
+            """
         elif METHOD == "regressor":
             trainer = lm_2.Trainer(
                 model=model0,
@@ -226,6 +226,7 @@ class TrainerAlgorithm(object):
             #    x=my_datasets.get("x_test"), y=my_datasets.get("y_test"), verbose=0)
             # print("adam - test_loss: %f - test_accuracy: %f" %
             #      (test_loss, test_acc))
+            print(model0.summary())
         return model0.trainable_variables
 
     def dropout_example(self, train_data):
