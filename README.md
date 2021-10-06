@@ -71,14 +71,16 @@ Data set folders:
 
 Change the choices for different data sets. For choices 1 and 3, following data files are currently available:
 
-The Artificial Data set:
+The Artificial Data set for regression:
 
     cd raw/testData.mat
 
-WCDS data set:
+WCDS data set for classification:
 
      cd raw/data.csv
 
+Change the choices for different data sets. For choices 1 and 3 ( for WCDS represented by ```data.csv``` and ```testData.mat``` respectively)
+
 The ``` data ``` folder will continuously be updated with other data sets.
 
-Note: This page will be continuously be updated (such as adding files for the ouput during training). The delay to finalize the the updates is due to the continuous change in the technology needed to run the code. Please kindly bear with us. Meanwhile, the authorized usage of the code is only available to the APIN Journal. For other request, authorization or duplication, please contact the owner via the following email: <nathaniel@aims.ac.za> or <message4nath@gmail.com>.
+Note: This page will be continuously be updated (such as adding files for the ouput during training). Continuous Updates are required due to the continuous change in the technology needed to run the code. kindly bear with us. Meanwhile, the authorized usage of the code is available to the APIN Journal. For other request, authorization or duplication, please contact the owner via the following email: <nathaniel@aims.ac.za> or <message4nath@gmail.com>.
