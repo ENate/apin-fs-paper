@@ -219,20 +219,14 @@ class TrainerAlgorithm(object):
             plt.xlabel("Model", fontsize=14, fontweight="bold")
             plt.ylabel("Data", fontsize=14, fontweight="bold")
             plt.show()
-            # print(my_datasets.get("y_test"))
         else:
-            # test_loss, test_acc = model0.evaluate(
-            #    x=my_datasets.get("x_test"), y=my_datasets.get("y_test"), verbose=0)
-            # test_loss, test_acc = model_wrapper.evaluate(
-            #    x=my_datasets.get("x_test"), y=my_datasets.get("y_test"), verbose=0)
-            # print("adam - test_loss: %f - test_accuracy: %f" %
-            #      (test_loss, test_acc))
-            
             for num in range(mat_input_hidden_1.shape[0]):
                 if np.sum(mat_input_hidden_1[num, :]) != 0.0:
                     kate_sum = kate_sum + 1
+            print("======NON-INFORMATIVE INPUTS============")
             print("Number of SELECTED INPUTS for this run: ")
             print(kate_sum)
+            print("======NON-INFORMATIVE INPUTS WITHOUT PARAMETERS < 0.001============")
             print("The other method:")
             print(np.sum(~mat_input_hidden_1.any(0)))
                 
