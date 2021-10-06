@@ -4,6 +4,9 @@ from deepNetImpl import NeuralNetwork
 from drawingNetsformatting import paramreshape
 
 
+def analyze_labels(y_prob, y_label):
+    pass
+
 def visualize_network(all_net_draw_mat):
     network = NeuralNetwork()
     # loop via formatted matrix as layers in network

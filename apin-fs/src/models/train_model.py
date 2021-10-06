@@ -13,6 +13,7 @@ from tensorflow.python.keras.backend import random_normal
 sys.path.append("../data/")
 sys.path.append(".")
 sys.path.append("..../")
+sys.path.append("../visualization")
 __path__ = [os.path.dirname(os.path.abspath(__file__))]
 from sequence_rna import func_inputs_and_label  # noqa
 from make_dataset import (
@@ -29,7 +30,7 @@ from custom_loss_regularization import (
     CategoricalMeanSquaredErr,
     CategoricalCELoss,
 )  # noqa
-
+from results_classifier import func_prediction_analysis
 # METHOD = "c_classifier"
 # METHOD = "regressor"
 # METHOD = "classify"
@@ -196,8 +197,9 @@ class TrainerAlgorithm(object):
         # print(optimal_model.shape)
         mat_input_hidden_1 = np.round(model_with_zeros, 2)
         # mat_input_hidden_1 = np.round(optimal_model, 2)
-        print(np.transpose(mat_input_hidden_1))
+        # print(np.transpose(mat_input_hidden_1))
         # print(np.round(optimal_model, 2))
+        kate_sum = 0
         t2_stop = time.perf_counter()
         print("Elapsed time: ", t2_stop - t2_start)
         predicted_output = model0(my_datasets.get("x_test"))
@@ -219,15 +221,24 @@ class TrainerAlgorithm(object):
             plt.show()
             # print(my_datasets.get("y_test"))
         else:
-            pass
             # test_loss, test_acc = model0.evaluate(
             #    x=my_datasets.get("x_test"), y=my_datasets.get("y_test"), verbose=0)
             # test_loss, test_acc = model_wrapper.evaluate(
             #    x=my_datasets.get("x_test"), y=my_datasets.get("y_test"), verbose=0)
             # print("adam - test_loss: %f - test_accuracy: %f" %
             #      (test_loss, test_acc))
+            
+            for num in range(mat_input_hidden_1.shape[0]):
+                if np.sum(mat_input_hidden_1[num, :]) != 0.0:
+                    kate_sum = kate_sum + 1
+            print("Selected for this sun: ")
+            print(kate_sum)
+            print("The other method:")
+            print(np.sum(~mat_input_hidden_1.any(1)))
+                
+            print("The model architecture ")
             print(model0.summary())
-        return model0.trainable_variables
+        return model0
 
     def dropout_example(self, train_data):
         """To include testing data results"""
@@ -344,6 +355,37 @@ if __name__ == "__main__":
     # t2_stop_cnt = time.perf_counter()
     # print(F'The count is: {t2_stop_cnt - t2_start}')
     t2_start = time.perf_counter()
-    TrainerAlgorithm(step_size, batch_size, input_sizes).training_models(dict_datasets)
+    model = TrainerAlgorithm(step_size, batch_size, input_sizes).training_models(dict_datasets)
+    x = model(TRAINING_INPUTS)
+    some_testy = TRAINING_OUTPUT[0:10, :]
+    # print(x.numpy()[0:10, :])
+    y = x.numpy()
+    one_hot_tensor = y
+    label_train_prob = tf.argmax(one_hot_tensor, axis = 1)
+    label2_train = tf.argmax(TRAINING_OUTPUT, axis=1)
+    #print("Predicted labels")
+    #print(label_train_prob)
+    #print("Training labels")
+    #print(label2_train)
+    y = np.where(y < 0, 0, 1)
+    print("10 point classifier output: ")
+    print(y[0:10, :])
+    print("10 point Test set output: ")
+    print(some_testy)
+    
+    print("Confusion matrix for training set:")
+    print(tf.math.confusion_matrix(label2_train, label_train_prob, num_classes=2).numpy())
+    
+    x_test = model(TESTING_INPUTS)
+    some_testy = TRAINING_OUTPUT[0:10, :]
+    # print(x.numpy()[0:10, :])
+    y_test = x_test.numpy()
+    one_hot_tensor_test = y_test
+    label_test_prob = tf.argmax(one_hot_tensor_test, axis = 1)
+    label2_test = tf.argmax(TESTING_OUTPUT, axis=1)
+    print("The Confusion matrix for the test set: ")
+    print(tf.math.confusion_matrix(label2_test, label_test_prob, num_classes=2).numpy())
+
     t2_stop_cnt = time.perf_counter()
     print(f"The count is: {t2_stop_cnt - t2_start}")
+    func_prediction_analysis(label_test_prob, label2_test)

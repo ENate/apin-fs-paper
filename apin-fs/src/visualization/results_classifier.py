@@ -4,16 +4,14 @@ from sklearn import metrics
 import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix, classification_report, precision_score
 
-sess = tf.Session()
-
 
 def func_prediction_analysis(predictions_nominal0, y_test):
-    predictions_nominal0 = predictions_nominal0[:, 0]
-    y_test = y_test[:, 0]
-    predictions_nominal = [False if x < 0.5 else True for x in predictions_nominal0]
-    print(classification_report(y_test, predictions_nominal, digits=3))
-    cm = confusion_matrix(y_test, predictions_nominal)
-    cfm = sess.run(tf.math.confusion_matrix(y_test, predictions_nominal, num_classes=2))
+    predictions_nominal0 = predictions_nominal0
+    y_test = y_test
+    # predictions_nominal = [False if x < 0.0 else True for x in predictions_nominal0]
+    print(classification_report(y_test, predictions_nominal0, digits=3))
+    cm = confusion_matrix(y_test, predictions_nominal0)
+    cfm = tf.math.confusion_matrix(y_test, predictions_nominal0, num_classes=2)
     true_negative = cfm[0][0]
     false_positive = cfm[0][1]
     false_negative = cfm[1][0]
