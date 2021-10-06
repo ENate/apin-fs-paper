@@ -7,7 +7,7 @@
 3) Install packages listed in the ``` requirements.txt ``` file.
 4) For Windows, refer to the following <a href="https://devblogs.microsoft.com/scripting/table-of-basic-powershell-commands/" target="_blank"> Windows Commands Website </a>
 5) For Mac, refere to <a href="https://support.apple.com/guide/terminal/execute-commands-and-run-tools-apdb66b5242-0d18-49fc-9c47-a2498b7c91d5/2.9/mac/10.14" target="_blank"> the Mac commands Page </a>
-6) The instructions described on this Page was performed on Linux.
+6) The instructions described on this Page were performed on Linux.
 
 <hr>
 
