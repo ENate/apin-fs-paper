@@ -2,7 +2,7 @@ import os
 import numpy as np
 
 __path__ = [os.path.dirname(os.path.abspath(__file__))]
-from .py_func_loss import func_full_matrices
+from py_func_loss import func_full_matrices
 
 
 def paramreshape(allparams, wbshapes, wbsizesx, hidden):

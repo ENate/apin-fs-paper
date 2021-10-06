@@ -8,7 +8,6 @@ from sklearn.metrics import confusion_matrix, classification_report, precision_s
 def func_prediction_analysis(predictions_nominal0, y_test):
     predictions_nominal0 = predictions_nominal0
     y_test = y_test
-    # predictions_nominal = [False if x < 0.0 else True for x in predictions_nominal0]
     print(classification_report(y_test, predictions_nominal0, digits=3))
     cm = confusion_matrix(y_test, predictions_nominal0)
     cfm = tf.math.confusion_matrix(y_test, predictions_nominal0, num_classes=2).numpy()

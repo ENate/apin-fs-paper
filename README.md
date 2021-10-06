@@ -1,7 +1,7 @@
-#Instructions on how to run the Code
+# Running the Code
 
 ## Tech Stack
-
+ 
 1) Python 3.8+
 2) TensorFlow v2.5+
 3) Install packages listed in the ``` requirements.txt ``` file.
