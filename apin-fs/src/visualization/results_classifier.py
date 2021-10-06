@@ -11,7 +11,7 @@ def func_prediction_analysis(predictions_nominal0, y_test):
     # predictions_nominal = [False if x < 0.0 else True for x in predictions_nominal0]
     print(classification_report(y_test, predictions_nominal0, digits=3))
     cm = confusion_matrix(y_test, predictions_nominal0)
-    cfm = tf.math.confusion_matrix(y_test, predictions_nominal0, num_classes=2)
+    cfm = tf.math.confusion_matrix(y_test, predictions_nominal0, num_classes=2).numpy()
     true_negative = cfm[0][0]
     false_positive = cfm[0][1]
     false_negative = cfm[1][0]
@@ -23,7 +23,7 @@ def func_prediction_analysis(predictions_nominal0, y_test):
     print("True Positive:", true_positive)
     print(
         "Correct Predictions",
-        round((true_negative + true_positive) / len(predictions_nominal) * 100, 1),
+        round((true_negative + true_positive) / len(predictions_nominal0) * 100, 1),
         "%",
     )
     fpr, tpr, threshold = metrics.roc_curve(y_test, predictions_nominal0)
@@ -37,5 +37,5 @@ def func_prediction_analysis(predictions_nominal0, y_test):
     plt.ylim([0, 1])
     plt.ylabel("True Positive Rate")
     plt.xlabel("False Positive Rate")
-    gsaved.savefig("/home/nath/finalResults/classifiers/TFPF1.pdf")
+    # gsaved.savefig("~/apin-fs-paper/apin-fs/reports/figures/classifiers/TFPF1.pdf")
     plt.show()

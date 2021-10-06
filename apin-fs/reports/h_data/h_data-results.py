@@ -87,11 +87,11 @@ def plot_wcds(kwarg_dicts, tp_fp, tn_fn):
 
     # save a pdf file
     fig.savefig(
-        "~/springer-fs-paper/LaTeX_DL_468198_240419/images_AI/compare_hdata.pdf"
+        "compare_hdata.pdf"
     )
     # save an eps file
     fig.savefig(
-        "~/springer-fs-paper/LaTeX_DL_468198_240419/images_AI/compare_hdata.pdf"
+        "compare_hdata.pdf"
     )
     # eps', format='eps', dpi=800)
     plt.show()

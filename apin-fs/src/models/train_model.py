@@ -197,7 +197,7 @@ class TrainerAlgorithm(object):
         # print(optimal_model.shape)
         mat_input_hidden_1 = np.round(model_with_zeros, 2)
         # mat_input_hidden_1 = np.round(optimal_model, 2)
-        # print(np.transpose(mat_input_hidden_1))
+        print(np.transpose(mat_input_hidden_1))
         # print(np.round(optimal_model, 2))
         kate_sum = 0
         t2_stop = time.perf_counter()
@@ -231,10 +231,10 @@ class TrainerAlgorithm(object):
             for num in range(mat_input_hidden_1.shape[0]):
                 if np.sum(mat_input_hidden_1[num, :]) != 0.0:
                     kate_sum = kate_sum + 1
-            print("Selected for this sun: ")
+            print("Number of SELECTED INPUTS for this run: ")
             print(kate_sum)
             print("The other method:")
-            print(np.sum(~mat_input_hidden_1.any(1)))
+            print(np.sum(~mat_input_hidden_1.any(0)))
                 
             print("The model architecture ")
             print(model0.summary())
