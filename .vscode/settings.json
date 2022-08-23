@@ -1,3 +1,23 @@
 {
-    "python.pythonPath": "/home/nath/miniconda3/envs/deepl_tf26/bin/python"
+    "C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools",
+    "workbench.colorCustomizations": {
+        "activityBar.activeBackground": "#4c58fc",
+        "activityBar.background": "#4c58fc",
+        "activityBar.foreground": "#e7e7e7",
+        "activityBar.inactiveForeground": "#e7e7e799",
+        "activityBarBadge.background": "#fd828a",
+        "activityBarBadge.foreground": "#15202b",
+        "commandCenter.border": "#e7e7e799",
+        "sash.hoverBorder": "#4c58fc",
+        "statusBar.background": "#1a29fb",
+        "statusBar.foreground": "#e7e7e7",
+        "statusBarItem.hoverBackground": "#4c58fc",
+        "statusBarItem.remoteBackground": "#1a29fb",
+        "statusBarItem.remoteForeground": "#e7e7e7",
+        "titleBar.activeBackground": "#1a29fb",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.inactiveBackground": "#1a29fb99",
+        "titleBar.inactiveForeground": "#e7e7e799"
+    },
+    "peacock.remoteColor": "#1a29fb"
 }

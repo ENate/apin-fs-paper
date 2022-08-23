@@ -1,0 +1,83 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.238.1/containers/python-3-anaconda
+{
+	"name": "Anaconda (Python 3)",
+	"build": {
+		"context": "..",
+		"dockerfile": "Dockerfile",
+		"args": {
+			"NODE_VERSION": "lts/*"
+		}
+	},
+
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// Set *default* container specific settings.json values on container create.
+			"settings": {
+				"python.defaultInterpreterPath": "/opt/conda/bin/python",
+				"python.linting.enabled": true,
+				"python.linting.pylintEnabled": true,
+				"python.formatting.autopep8Path": "/opt/conda/bin/autopep8",
+				"python.formatting.yapfPath": "/opt/conda/bin/yapf",
+				"python.linting.flake8Path": "/opt/conda/bin/flake8",
+				"python.linting.pycodestylePath": "/opt/conda/bin/pycodestyle",
+				"python.linting.pydocstylePath": "/opt/conda/bin/pydocstyle",
+				"python.linting.pylintPath": "/opt/conda/bin/pylint"
+			},
+
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"ms-python.python",
+				"ms-python.vscode-pylance",
+				"vscjava.vscode-java-pack",
+				"formulahendry.vscode-mysql",
+				"cweijan.vscode-mysql-client2",
+				"Pivotal.vscode-boot-dev-pack",
+				"vscjava.vscode-lombok",
+				"eamodio.gitlens",
+				"felipecaputo.git-project-manager",
+				"dbaeumer.vscode-eslint",
+				"ms-vscode.cpptools-extension-pack",
+				"evondev.indent-rainbow-palettes",
+				"donjayamanne.git-extension-pack",
+				"esbenp.prettier-vscode",
+				"redhat.vscode-xml",
+				"rangav.vscode-thunder-client",
+				"developersoapbox.vscode-springboot-developer-pack",
+				"ms-azuretools.vscode-dapr",
+				"bierner.markdown-preview-github-styles",
+				"oderwat.indent-rainbow",
+				"mongodb.mongodb-vscode",
+				"2gua.rainbow-brackets",
+				"dzhavat.bracket-pair-toggler",
+				"IBM.output-colorizer",
+				"GitHub.vscode-pull-request-github",
+				"mhutchie.git-graph",
+				"cweijan.git-graph-history",
+				"donjayamanne.python-extension-pack"
+			]
+		}
+	},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "python --version",
+
+	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "vscode",
+	"features": {
+		"docker-in-docker": "20.10",
+		"docker-from-docker": "20.10",
+		"kubectl-helm-minikube": "latest",
+		"terraform": "1.2",
+		"git-lfs": "latest",
+		"github-cli": "latest",
+		"java": "lts",
+		"maven": "3.8",
+		"dotnet": "6.0"
+	}
+}
