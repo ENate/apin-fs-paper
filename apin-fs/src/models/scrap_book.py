@@ -1,3 +1,4 @@
+""" performs some sort of integration testing """
 import argparse
 
 
@@ -10,6 +11,7 @@ def make_argparse():
 
 
 def function_call_argparse():
+    """  call argparse function """
     def_values = make_argparse()
     print(def_values.time_delta_n)
 
