@@ -7,5 +7,5 @@ RUN rm -rf ~/miniconda3/miniconda.sh
 RUN ~/miniconda3/bin/conda init bash
 RUN ~/miniconda3/bin/conda init zsh
 
-RUN conda create -n l2paper python=3.10
-RUN conda activate l2paper && cd apin-fs && make requirements
+#RUN conda create -n l2paper python=3.10
+#RUN conda activate l2paper && cd apin-fs && make requirements
