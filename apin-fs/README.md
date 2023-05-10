@@ -1,4 +1,4 @@
-feacture-selection
+feature-selection
 ==============================
 
 FS Using Structured Penalty
